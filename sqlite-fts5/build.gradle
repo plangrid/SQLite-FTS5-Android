@@ -8,7 +8,6 @@ ext {
     SQLITE_VERSION = '3200100'
     SQLITE_YEAR = '2017'
     SQLITE_BUNDLE_NAME = "sqlite-src-${SQLITE_VERSION}.zip"
-    SQLITE_SOURCE_DIR = "sqlite-src-${SQLITE_VERSION}";
 }
 
 apply plugin: 'com.android.library'
