@@ -21,7 +21,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     @Override public void onCreate(final SQLiteDatabase db) {
-
+        try {
+            db.beginTransaction();
+            db.execSQL("CREATE VIRTUAL TABLE IF NOT EXIST searching USING fts5(text);");
+            db.setTransactionSuccessful();
+        } finally {
+            db.endTransaction();
+        }
     }
 
     @Override public void onUpgrade(final SQLiteDatabase db, final int oldVersion, final int newVersion) {
