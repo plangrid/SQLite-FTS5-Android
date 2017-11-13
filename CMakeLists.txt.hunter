@@ -1,0 +1,13 @@
+cmake_minimum_required(VERSION 3.7.1)
+
+include("${CMAKE_CURRENT_LIST_DIR}/jni/HunterGate.cmake")
+
+HunterGate(
+    URL "https://github.com/ruslo/hunter/archive/v0.16.15.tar.gz"
+    SHA1 "6974c2150fc0d3b09de3ad1efcbf15d360647ffa"
+)
+
+project(sqlite-fts5)
+
+hunter_add_package(SQLite3)
+find_package(SQLite3 REQUIRED)
