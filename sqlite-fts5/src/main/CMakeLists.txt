@@ -1,12 +1,13 @@
 cmake_minimum_required(VERSION 2.8)
 include(ExternalProject)
 
+set(SQLITE_ZIP ${CMAKE_CURRENT_LIST_DIR}/../../build/sqlite-src-3200100.zip)
+message(${SQLITE_ZIP})
+
 ExternalProject_Add(sqlite-sources
-	URL http://www.sqlite.org/2017/sqlite-src-3200100.zip
-        PREFIX ${CMAKE_CURRENT_BINARY_DIR}/sqlite-sources
-        CONFIGURE_COMMAND cd ../sqlite-sources && ./configure
-	#[[BUILD_COMMAND cd ../sqlite-sources && make fts5.c && make sqlite3.c]]
-	#[[INSTALL_COMMAND cd ${CMAKE_CURRENT_BINARY_DIR}/sqlite-sources/src/sqlite-sources && cp fts5.h ../.. && cp fts5.c ../.. && cp sqlite3.h ../..)]]
+	URL ${SQLITE_ZIP}
+	PREFIX ${CMAKE_CURRENT_BINARY_DIR}/sqlite-sources
+	CONFIGURE_COMMAND cd ../sqlite-sources && ./configure
 	BUILD_COMMAND ""
 	INSTALL_COMMAND "")
 
