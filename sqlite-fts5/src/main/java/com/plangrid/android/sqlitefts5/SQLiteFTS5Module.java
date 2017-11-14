@@ -10,7 +10,7 @@ public class SQLiteFTS5Module {
     }
 
     public SQLiteCustomExtension getExtension(final String path) {
-        return new SQLiteCustomExtension(path, null);
+        return new SQLiteCustomExtension(path, "sqlite3_fts5_init");
     }
 
     public SQLiteCustomExtension getExtension(final ApplicationInfo info) {

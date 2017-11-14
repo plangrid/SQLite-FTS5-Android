@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 2.8)
 include(ExternalProject)
 
-set(SQLITE_ZIP ${CMAKE_CURRENT_LIST_DIR}/../../build/sqlite-src-3200100.zip)
+set(SQLITE_ZIP ${CMAKE_CURRENT_LIST_DIR}/../../build/sqlite-src-3210000.zip)
 
 ExternalProject_Add(sqlite-sources
 	URL ${SQLITE_ZIP}
@@ -13,10 +13,9 @@ ExternalProject_Add(sqlite-sources
 ExternalProject_Get_Property(sqlite-sources install_dir)
 
 add_custom_command(
-	OUTPUT fts5.c fts5.h sqlite3.h sqlite3ext.h
+	OUTPUT fts5.c sqlite3.h sqlite3ext.h
 	DEPENDS ${install_dir}
 	COMMAND make fts5.c
-	COMMAND cp fts5.h ${CMAKE_CURRENT_BINARY_DIR}
 	COMMAND cp fts5.c ${CMAKE_CURRENT_BINARY_DIR}
 	COMMAND make sqlite3.c
 	COMMAND cp sqlite3.h ${CMAKE_CURRENT_BINARY_DIR}
@@ -24,6 +23,6 @@ add_custom_command(
 	WORKING_DIRECTORY ${install_dir}/src/sqlite-sources
 	)
 
-add_custom_target(gen-sources DEPENDS fts5.c fts5.h sqlite3.h sqlite3ext.h)
-add_library(sqlite-fts5 SHARED sqlite3.h fts5.h fts5.c sqlite3ext.h)
+add_custom_target(gen-sources DEPENDS fts5.c sqlite3.h sqlite3ext.h)
+add_library(sqlite-fts5 SHARED sqlite3.h fts5.c sqlite3ext.h)
 add_dependencies(sqlite-fts5 gen-sources)
