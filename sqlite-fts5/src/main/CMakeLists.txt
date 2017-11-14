@@ -1,8 +1,6 @@
 cmake_minimum_required(VERSION 2.8)
 include(ExternalProject)
 
-set(SQLITE_ZIP ${CMAKE_CURRENT_LIST_DIR}/../../build/sqlite-src-3210000.zip)
-
 ExternalProject_Add(sqlite-sources
 	URL ${SQLITE_ZIP}
 	PREFIX ${CMAKE_CURRENT_BINARY_DIR}/sqlite-sources

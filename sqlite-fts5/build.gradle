@@ -13,10 +13,6 @@ ext {
 apply plugin: 'com.android.library'
 apply plugin: 'de.undercouch.download'
 
-gradle.projectsEvaluated {
-    preBuild.dependsOn downloadSqliteSource
-}
-
 android {
     compileSdkVersion 26
     defaultConfig {
@@ -27,6 +23,11 @@ android {
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
+        externalNativeBuild {
+            cmake {
+                arguments "-DSQLITE_ZIP:String=${buildDir}/${SQLITE_BUNDLE_NAME}"
+            }
+        }
     }
     buildTypes {
         release {
@@ -56,4 +57,9 @@ task downloadSqliteSource(type: Download) {
     src "http://www.sqlite.org/${SQLITE_YEAR}/${SQLITE_BUNDLE_NAME}"
     overwrite false
     dest buildDir
+}
+
+afterEvaluate {
+    externalNativeBuildDebug.dependsOn downloadSqliteSource
+    externalNativeBuildRelease.dependsOn downloadSqliteSource
 }
