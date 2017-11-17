@@ -23,7 +23,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override public void onCreate(final SQLiteDatabase db) {
         try {
             db.beginTransaction();
-            db.execSQL("CREATE VIRTUAL TABLE IF NOT EXIST searching USING fts5(text);");
+            db.execSQL("CREATE VIRTUAL TABLE IF NOT EXISTS searching USING fts5(text);");
             db.setTransactionSuccessful();
         } finally {
             db.endTransaction();

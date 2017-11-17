@@ -6,7 +6,7 @@ import io.requery.android.database.sqlite.SQLiteCustomExtension;
 
 public class SQLiteFTS5Module {
     public String getPath(final ApplicationInfo info) {
-        return info.nativeLibraryDir + "libsqlite-fts5.so";
+        return info.nativeLibraryDir + "/libsqlite-fts5";
     }
 
     public SQLiteCustomExtension getExtension(final String path) {
