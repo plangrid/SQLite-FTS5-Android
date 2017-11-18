@@ -8,6 +8,10 @@ ext {
     SQLITE_VERSION = '3210000'
     SQLITE_YEAR = '2017'
     SQLITE_BUNDLE_NAME = "sqlite-src-${SQLITE_VERSION}.zip"
+
+    PUBLISH_GROUP_ID = 'com.plangrid.android'
+    PUBLISH_ARTIFACT_ID = 'sqlite-fts5-android'
+    PUBLISH_VERSION = '3.21.0'
 }
 
 apply plugin: 'com.android.library'
@@ -63,3 +67,5 @@ afterEvaluate {
     externalNativeBuildDebug.dependsOn downloadSqliteSource
     externalNativeBuildRelease.dependsOn downloadSqliteSource
 }
+
+apply from: 'https://raw.githubusercontent.com/blundell/release-android-library/master/android-release-aar.gradle'
