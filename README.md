@@ -15,5 +15,10 @@ Build the module with gradle:
 ./gradlew sqlite-fts5:generateRelease
 ```
 
+Alternately, build the module on a Docker container using gradle:
+```
+./docker-gradle sqlite-fts5:generateRelease
+```
+
 *Known Limitations*
 - `mips` and `mips64` ABI's are [deprecated](https://developer.android.com/ndk/guides/mips.html), so the binaries are not provided by this project
