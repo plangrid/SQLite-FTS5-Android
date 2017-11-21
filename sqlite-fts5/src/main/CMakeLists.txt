@@ -1,12 +1,14 @@
 cmake_minimum_required(VERSION 2.8)
 include(ExternalProject)
 
+# construct build variant based on ANDROID_HOST_TAG because sqlite's auto-detect sometimes doesn't work
+string(REGEX REPLACE "([^-]+)-(.*)" "\\2-\\1" SQLITE_BUILD ${ANDROID_HOST_TAG})
 set(MAKE "${ANDROID_HOST_PREBUILTS}/bin/make")
 
 ExternalProject_Add(sqlite-sources
 	URL ${SQLITE_ZIP}
 	PREFIX ${CMAKE_CURRENT_BINARY_DIR}/sqlite-sources
-	CONFIGURE_COMMAND cd ../sqlite-sources && ./configure
+	CONFIGURE_COMMAND cd ../sqlite-sources && ./configure --build ${SQLITE_BUILD}
 	BUILD_COMMAND ""
 	INSTALL_COMMAND "")
 
