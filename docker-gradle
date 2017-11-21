@@ -1,0 +1,11 @@
+#!/bin/sh
+
+ARGS="$@"
+if [ -z "$ARGS" ]; then
+    ARGS="tasks"
+fi
+
+docker build . -t plangrid-android-test
+touch local.properties.dummy
+
+docker run --rm -it -v "$(pwd):/build" -w /build -u $(id -u):$(id -g) -v "$(pwd)/local.properties.dummy:/build/local.properties" sqlite-fts5-build ./gradlew $ARGS
