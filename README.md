@@ -9,6 +9,7 @@ This builds and packages the [FTS5 extension](https://sqlite.org/fts5.html) for 
         return config;
     }
 ```
+To build this module, you must install `gcc`, `tcl`, and `make` to your `PATH`. Alternately, install Docker, and use the `docker-gradle` script to build inside a container.
 
 Build the module with gradle:
 ```
