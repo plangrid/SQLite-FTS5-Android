@@ -10,5 +10,10 @@ This builds and packages the [FTS5 extension](https://sqlite.org/fts5.html) for 
     }
 ```
 
+Build the module with gradle:
+```
+./gradlew sqlite-fts5:generateRelease
+```
+
 *Known Limitations*
 - `mips` and `mips64` ABI's are [deprecated](https://developer.android.com/ndk/guides/mips.html), so the binaries are not provided by this project
