@@ -50,5 +50,9 @@ dependencies {
 }
 ```
 
+**Updating and Publishing**
+
+Before publishing, make sure to update the `PUBLISH_VERSION` in [build.gradle](https://github.com/plangrid/SQLite-FTS5-Android/blob/master/sqlite-fts5/build.gradle). That is where we set the version for the lib. There is no CI for this module, though it is [pending](https://plangrid.atlassian.net/browse/AN-4130). If you need to update it, bother @goosemo.
+
 *Known Limitations*
 - `mips` and `mips64` ABI's are [deprecated](https://developer.android.com/ndk/guides/mips.html), so the binaries are not provided by this project
