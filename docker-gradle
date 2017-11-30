@@ -5,7 +5,9 @@ if [ -z "$ARGS" ]; then
     ARGS="tasks"
 fi
 
-docker build . -t plangrid-android-test
+DOCKER_IMAGE=sqlite-fts5-build
+
+docker build . -t "${DOCKER_IMAGE}"
 touch local.properties.dummy
 
-docker run --rm -it -v "$(pwd):/build" -w /build -u $(id -u):$(id -g) -v "$(pwd)/local.properties.dummy:/build/local.properties" sqlite-fts5-build ./gradlew $ARGS
+docker run --rm -it -v "$(pwd):/build" -w /build -u $(id -u):$(id -g) -v "$(pwd)/local.properties.dummy:/build/local.properties" "${DOCKER_IMAGE}"  ./gradlew $ARGS
