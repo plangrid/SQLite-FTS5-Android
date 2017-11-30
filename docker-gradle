@@ -16,5 +16,7 @@ docker run \
     -v "$(pwd):/build" \
     -v "$(pwd)/local.properties.dummy:/build/local.properties" \
     -w /build \
+    -e ARTIFACTORY_USER \
+    -e ARTIFACTORY_PASSWORD \
     -it ${docker_image} \
     ./gradlew $ARGS
