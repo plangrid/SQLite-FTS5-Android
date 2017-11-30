@@ -47,3 +47,10 @@ RUN yes | ${ANDROID_HOME}/tools/bin/sdkmanager "cmake;3.6.4111459"
 RUN yes | ${ANDROID_HOME}/tools/bin/sdkmanager "ndk-bundle"
 
 ENV ANDROID_NDK_HOME ${ANDROID_HOME}/ndk-bundle
+
+ENV GRADLE_VERSION=4.1
+RUN curl -L https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-bin.zip -O \
+  && unzip -q gradle-${GRADLE_VERSION}-bin.zip \
+  && ln -s "/usr/lib/gradle-${GRADLE_VERSION}/bin/gradle" /usr/bin/gradle
+
+ENV GRADLE_HOME=/app/gradle-${GRADLE_VERSION}
