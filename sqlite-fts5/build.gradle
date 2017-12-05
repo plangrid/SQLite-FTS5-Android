@@ -16,6 +16,7 @@ ext {
 
 apply plugin: 'com.android.library'
 apply plugin: 'de.undercouch.download'
+apply plugin: 'maven'
 
 android {
     compileSdkVersion 26
@@ -51,6 +52,18 @@ android {
     buildToolsVersion '26.0.2'
 }
 
+/*
+repositories {
+    maven {
+        url = "https://plangrid.jfrog.io/plangrid/libs-release-local"
+        credentials {
+            username = System.getenv("ARTIFACTORY_USER")
+            password = System.getenv("ARTIFACTORY_PASSWORD")
+        }
+    }
+}
+
+*/
 dependencies {
     implementation 'com.android.support:appcompat-v7:26.1.0'
     implementation 'io.requery:sqlite-android:3.21.0'
@@ -67,4 +80,18 @@ afterEvaluate {
     externalNativeBuildRelease.dependsOn downloadSqliteSource
 }
 
-apply from: 'https://raw.githubusercontent.com/blundell/release-android-library/master/android-release-aar.gradle'
+apply from: 'android-release-aar.gradle'
+
+/*
+uploadArchives << {
+    repositories.mavenDeployer {
+        pom.groupId = PUBLISH_GROUP_ID
+        pom.artifactId = PUBLISH_ARTIFACT_ID
+        pom.version = PUBLISH_VERSION
+
+        repository(url: "https://plangrid.jfrog.io/plangrid/libs-release-local") {
+            authentication(userName: System.getenv("ARTIFACTORY_USER"), password: System.getenv("ARTIFACTORY_PASSWORD"))
+        }
+    }
+}
+*/
