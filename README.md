@@ -16,7 +16,7 @@ To build this module, you must install `gcc`, `tcl`, and `make` to your `PATH`. 
 
 Build the module with gradle:
 ```
-./gradlew sqlite-fts5:generateRelease
+./gradlew sqlite-fts5:assemble
 ```
 
 Alternately, build the module on a Docker container using gradle:
@@ -52,7 +52,11 @@ dependencies {
 
 **Updating and Publishing**
 
-Before publishing, make sure to update the `PUBLISH_VERSION` in [build.gradle](https://github.com/plangrid/SQLite-FTS5-Android/blob/master/sqlite-fts5/build.gradle). That is where we set the version for the lib. There is no CI for this module, though it is [pending](https://plangrid.atlassian.net/browse/AN-4130). If you need to update it, bother @goosemo.
+Before publishing, make sure to update the `PUBLISH_VERSION` in [build.gradle](https://github.com/plangrid/SQLite-FTS5-Android/blob/master/sqlite-fts5/build.gradle). That is where we set the version for the lib. There is no CI for this module, though it is [pending](https://plangrid.atlassian.net/browse/AN-4130). When deploying, be sure to set env vars for `ARTIFACTORY_USER` and `ARTIFACTORY_PASSWORD` before running `uploadArchives`. These should be set for you already in the CI environment.
+
+```
+./gradlew sqlite-fts5:uploadArchives
+```
 
 *Known Limitations*
 - `mips` and `mips64` ABI's are [deprecated](https://developer.android.com/ndk/guides/mips.html), so the binaries are not provided by this project
