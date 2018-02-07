@@ -5,13 +5,13 @@ plugins {
 }
 
 ext {
-    SQLITE_VERSION = '3210000'
-    SQLITE_YEAR = '2017'
+    SQLITE_VERSION = '3220000'
+    SQLITE_YEAR = '2018'
     SQLITE_BUNDLE_NAME = "sqlite-src-${SQLITE_VERSION}.zip"
 
     PUBLISH_GROUP_ID = 'com.plangrid.android'
     PUBLISH_ARTIFACT_ID = 'sqlite-fts5-android'
-    PUBLISH_VERSION = '3.21.0'
+    PUBLISH_VERSION = '3.22.0'
 }
 
 apply plugin: 'com.android.library'
@@ -53,7 +53,7 @@ android {
 
 dependencies {
     implementation 'com.android.support:appcompat-v7:26.1.0'
-    implementation 'io.requery:sqlite-android:3.21.0'
+    implementation 'io.requery:sqlite-android:3.22.0'
 }
 
 task downloadSqliteSource(type: Download) {
