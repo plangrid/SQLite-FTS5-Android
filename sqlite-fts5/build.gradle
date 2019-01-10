@@ -1,7 +1,5 @@
-import de.undercouch.gradle.tasks.download.Download
-
 plugins {
-    id 'de.undercouch.download' version '3.3.0'
+    id 'de.undercouch.download' version '3.4.3'
 }
 
 ext {
@@ -18,10 +16,10 @@ apply plugin: 'com.android.library'
 apply plugin: 'de.undercouch.download'
 
 android {
-    compileSdkVersion 26
+    compileSdkVersion 28
     defaultConfig {
         minSdkVersion 15
-        targetSdkVersion 26
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
 
@@ -48,11 +46,11 @@ android {
             path 'src/main/CMakeLists.txt'
         }
     }
-    buildToolsVersion '26.0.2'
+    buildToolsVersion '28.0.3'
 }
 
 dependencies {
-    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation 'io.requery:sqlite-android:3.22.0'
 }
 
