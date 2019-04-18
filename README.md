@@ -46,7 +46,7 @@ As noted above, you need credentials to access the private repo.
 Then, add the package to your list of dependencies:
 ```
 dependencies {
-    compile 'com.plangrid.android:sqlite-fts5-android:3.21.0'
+    compile 'com.plangrid.android:sqlite-fts5-android:3.27.2'
 }
 ```
 

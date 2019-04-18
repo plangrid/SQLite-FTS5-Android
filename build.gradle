@@ -1,14 +1,23 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
+
+    ext.versions = [
+            'androidBuildTools': '28.0.3',
+            'androidMinSdk': 21,
+            'androidTargetSdk': 28,
+            'sqlite': '3.27.2',
+            'sqliteSource': '3270200',
+            'sqliteYear': '2019',
+    ]
     
     repositories {
         google()
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.0.1'
-        classpath 'org.apache.httpcomponents:httpclient:4.5.3'
+        classpath 'com.android.tools.build:gradle:3.4.0'
+        classpath 'org.apache.httpcomponents:httpclient:4.5.6'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files

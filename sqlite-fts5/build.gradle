@@ -1,31 +1,27 @@
-import de.undercouch.gradle.tasks.download.Download
-
 plugins {
-    id 'de.undercouch.download' version '3.3.0'
+    id 'de.undercouch.download' version '3.4.3'
 }
 
 ext {
-    SQLITE_VERSION = '3220000'
-    SQLITE_YEAR = '2018'
-    SQLITE_BUNDLE_NAME = "sqlite-src-${SQLITE_VERSION}.zip"
+    SQLITE_BUNDLE_NAME = "sqlite-src-${versions.sqliteSource}.zip"
 
     PUBLISH_GROUP_ID = 'com.plangrid.android'
     PUBLISH_ARTIFACT_ID = 'sqlite-fts5-android'
-    PUBLISH_VERSION = '3.22.0'
+    PUBLISH_VERSION = versions.sqlite
 }
 
 apply plugin: 'com.android.library'
 apply plugin: 'de.undercouch.download'
 
 android {
-    compileSdkVersion 26
+    compileSdkVersion versions.androidTargetSdk
     defaultConfig {
-        minSdkVersion 15
-        targetSdkVersion 26
+        minSdkVersion versions.androidMinSdk
+        targetSdkVersion versions.androidTargetSdk
         versionCode 1
         versionName "1.0"
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         externalNativeBuild {
             cmake {
@@ -40,24 +36,24 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_7
-        targetCompatibility JavaVersion.VERSION_1_7
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
     externalNativeBuild {
         cmake {
             path 'src/main/CMakeLists.txt'
         }
     }
-    buildToolsVersion '26.0.2'
+    buildToolsVersion versions.androidBuildTools
 }
 
 dependencies {
-    implementation 'com.android.support:appcompat-v7:26.1.0'
-    implementation 'io.requery:sqlite-android:3.22.0'
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation "io.requery:sqlite-android:${versions.sqlite}"
 }
 
 task downloadSqliteSource(type: Download) {
-    src "http://www.sqlite.org/${SQLITE_YEAR}/${SQLITE_BUNDLE_NAME}"
+    src "http://www.sqlite.org/${versions.sqliteYear}/${SQLITE_BUNDLE_NAME}"
     overwrite false
     dest buildDir
 }
