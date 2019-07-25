@@ -25,7 +25,7 @@ android {
 
         externalNativeBuild {
             cmake {
-                arguments "-DSQLITE_ZIP:String=${buildDir}/${SQLITE_BUNDLE_NAME}"
+                arguments "-DSQLITE_ZIP:String=${buildDir}/${SQLITE_BUNDLE_NAME} -DSQLITE_MAX_VARIABLE_NUMBER:String=2147483000"
             }
         }
     }
