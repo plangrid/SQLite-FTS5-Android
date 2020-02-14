@@ -1,3 +1,5 @@
+*DEPRECATED, REQUERY NOW SUPPORTS FTS5 NATIVELY WITHOUT THE NEED FOR THIS EXTENSION*
+
 ***SQLite FTS5 Module for Android***
 
 This builds and packages the [FTS5 extension](https://sqlite.org/fts5.html) for SQLite for consumption by the [Requery SQLite Support Library](https://github.com/requery/sqlite-android). Load the module by overriding `SQLiteOpenHelper#createConfiguration` to add it to the list of `#customExtensions`:
